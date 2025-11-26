@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produk - ILZA Beauty</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <style>
+        /* Variabel Warna dari Desain Figma/Gambar */
+        :root {
+            --color-primary: #8e5151; /* Pink Tua/Maroon untuk tombol/harga */
+            --color-secondary: #E68D8D; /* Salmon untuk Hero dan Footer */
+            --color-text-dark: #333;
+            --color-text-light: #fff;
+            --color-background-light: #f7f7f7;
+        }
+
+        body {
+            font-family: sans-serif;
+            line-height: 1.6;
+            background-color: #fff;
+        }
+
+        /* --- 1. Header/Navbar (Sticky) --- */
+        .navbar-light {
+            background-color: #995656 !important;
+            z-index: 1020; 
+        }
+
+        .navbar-light .navbar-brand {
+            color: #fff !important;
+        }
+
+        .navbar-light .navbar-nav .nav-link {
+            color: #fff;
+            font-weight: 500;
+        }
+
+        /* --- 2. Hero Header (Produk) --- */
+        .product-hero {
+            position: relative;
+            height: 600px; /* Tinggi disesuaikan */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            overflow: hidden;
+            background: url('foto produk.jpg') no-repeat center center;
+            background-size: cover;
+        }
+
+        .product-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3); 
+        }
+
+        .product-hero h1 {
+            color: var(--color-text-light);
+            font-size: 3rem;
+            font-weight: bold;
+            z-index: 10;
+        }
+
+        /* --- 3. Product Listing Section --- */
+        .listing-header {
+            background-color: var(--color-secondary); /* Warna salmon */
+            color: var(--color-text-light);
+            padding: 15px 0;
+            font-size: 1.25rem;
+            font-weight: bold;
+            text-align: center;
+            border-radius: 8px; /* Sudut melengkung */
+            margin-top: -30px; /* Diangkat sedikit di atas konten */
+            z-index: 10;
+            position: relative;
+        }
+
+        .product-card {
+            border: none;
+            text-align: left;
+            margin-bottom: 25px; /* Jarak antar kartu */
+        }
+        
+        .product-card .card-img-top {
+            border-radius: 8px;
+            width: 100%;
+            height: 200px; /* Tinggi tetap untuk gambar produk */
+            object-fit: cover; /* Memastikan gambar mengisi area tanpa terdistorsi */
+        }
+
+        .product-card .card-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        
+        .product-card .card-text {
+            font-size: 0.85rem;
+            color: #6c757d;
+            display: none;
+        }
+
+        /* Tampilkan deskripsi jika kartu memiliki class show-desc (per-produk) */
+        .product-card.show-desc .card-text {
+            display: block;
+        }
+
+        .product-card .price {
+            font-weight: bold;
+            color: var(--color-primary);
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+        .btn-product {
+            width: 100%;
+            background-color: var(--color-secondary);
+            color: var(--color-text-light);
+            font-weight: 600;
+            padding: 8px;
+        }
+        .btn-product:hover {
+            background-color: var(--color-primary);
+            color: var(--color-text-light);
+        }
+
+        /* Tombol Toggle Deskripsi */
+        .toggle-desc-btn {
+            width: 100%;
+            background-color: #995656;
+            color: var(--color-text-light);
+            border: none;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .toggle-desc-btn:hover {
+            background-color: #8e5151;
+            color: var(--color-text-light);
+        }
+
+        /* --- 4. Footer --- */
+        .main-footer {
+            background-color: var(--color-secondary);
+            color: var(--color-text-light);
+            padding: 50px 0;
+        }
+        .main-footer a {
+            color: var(--color-text-light);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light py-3 **sticky-top**"> 
+            <div class="container-fluid px-5">
+                <a class="navbar-brand fw-bold" href="#">ILZA Beauty</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item"><a class="nav-link" href="index.html">Beranda</a></li>
+                        <li class="nav-item"><a class="nav-link" href="tentang-kami.html">Tentang Kami</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="produk.html">Produk</a></li>
+                        <li class="nav-item"><a class="nav-link" href="testimoni.html">Testimoni</a></li>
+                        <li class="nav-item"><a class="nav-link" href="kontak.html">Kontak</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="product-hero">
+        <h1>Produk</h1>
+    </section>
+
+    <section class="container py-5">
+        
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-8">
+                <div class="listing-header shadow-sm">
+                    Di Rekomendasikan Untuk Anda
+                </div>
+            </div>
+        </div>
+
+        <div class="row pt-4">
+            
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="product-card card">
+                    <img src="produk 1.jpg" class="card-img-top" alt="Skincare Tube">
+                    <div class="card-body p-2">
+                        <h5 class="card-title">MEDICUBE</h5>
+                        <p class="card-text">Serum pencerah untuk flek hitam dan bekas jerawat.</p>
+                        <p class="price">Rp. 95.000</p>
+                        <a href="kontak.html" class="btn btn-product btn-sm">Beli Sekarang</a>
+                        <button class="btn btn-outline-secondary btn-sm toggle-desc-btn mt-2">Tampilkan Deskripsi</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="product-card card">
+                    <img src="produk 2.jpg" class="card-img-top" alt="Skincare Dropper">
+                    <div class="card-body p-2">
+                        <h5 class="card-title">GLAD2GLOW</h5>
+                        <p class="card-text">Essence ringan untuk melembapkan dan membuat kulit glowing</p>
+                        <p class="price">Rp. 75.000</p>
+                        <a href="kontak.html" class="btn btn-product btn-sm">Beli Sekarang</a>
+                        <button class="btn btn-outline-secondary btn-sm toggle-desc-btn mt-2">Tampilkan Deskripsi</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="product-card card">
+                    <img src="produk 3.jpg" class="card-img-top" alt="Small Bottle">
+                    <div class="card-body p-2">
+                        <h5 class="card-title">GARNIER</h5>
+                        <p class="card-text">Micellar water untuk membersihkan makeup dan kotoran dengan lembut.</p>
+                        <p class="price">Rp. 40.000</p>
+                        <a href="kontak.html" class="btn btn-product btn-sm">Beli Sekarang</a>
+                        <button class="btn btn-outline-secondary btn-sm toggle-desc-btn mt-2">Tampilkan Deskripsi</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="product-card card">
+                    <img src="produk 4.jpg" class="card-img-top" alt="Makeup Pouch">
+                    <div class="card-body p-2">
+                        <h5 class="card-title">LUMEA</h5>
+                        <p class="card-text">Essence vitamin C untuk mencerahkan dan menyegarkan kulit.</p>
+                        <p class="price">Rp. 125.000</p>
+                        <a href="kontak.html" class="btn btn-product btn-sm">Beli Sekarang</a>
+                        <button class="btn btn-outline-secondary btn-sm toggle-desc-btn mt-2">Tampilkan Deskripsi</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="product-card card">
+                    <img src="produk 5.jpg" class="card-img-top" alt="Foundation">
+                    <div class="card-body p-2">
+                        <h5 class="card-title">BLOOM</h5>
+                        <p class="card-text">Krim wajah untuk melembapkan dan membuat kulit lebih halus.</p>
+                        <p class="price">Rp. 50.000</p>
+                        <a href="kontak.html" class="btn btn-product btn-sm">Beli Sekarang</a>
+                        <button class="btn btn-outline-secondary btn-sm toggle-desc-btn mt-2">Tampilkan Deskripsi</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="product-card card">
+                    <img src="produk 6.jpg" class="card-img-top" alt="Foundation">
+                    <div class="card-body p-2">
+                        <h5 class="card-title">ARENCIA</h5>
+                        <p class="card-text">Moisturizer dengan tekstur ringan untuk hidrasi sehari-hari.</p>
+                        <p class="price">Rp. 37.000</p>
+                        <a href="kontak.html" class="btn btn-product btn-sm">Beli Sekarang</a>
+                        <button class="btn btn-outline-secondary btn-sm toggle-desc-btn mt-2">Tampilkan Deskripsi</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="product-card card">
+                    <img src="produk 7.jpg" class="card-img-top" alt="Foundation">
+                    <div class="card-body p-2">
+                        <h5 class="card-title">CAUDALIE</h5>
+                        <p class="card-text">Krim perawatan kulit untuk melembutkan dan meratakan tekstur.</p>
+                        <p class="price">Rp. 69.000</p>
+                        <a href="kontak.html" class="btn btn-product btn-sm">Beli Sekarang</a>
+                        <button class="btn btn-outline-secondary btn-sm toggle-desc-btn mt-2">Tampilkan Deskripsi</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="product-card card">
+                    <img src="produk 8.jpg" class="card-img-top" alt="Foundation">
+                    <div class="card-body p-2">
+                        <h5 class="card-title">CLARINS</h5>
+                        <p class="card-text">Krim harian dengan niacinamide untuk mencerahkan dan menutrisi kulit.</p>
+                        <p class="price">Rp. 72.000</p>
+                        <a href="kontak.html" class="btn btn-product btn-sm">Beli Sekarang</a>
+                        <button class="btn btn-outline-secondary btn-sm toggle-desc-btn mt-2">Tampilkan Deskripsi</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="product-card card">
+                    <img src="cushion.jpg" class="card-img-top" alt="Foundation">
+                    <div class="card-body p-2">
+                        <h5 class="card-title">SKINTIFIC</h5>
+                        <p class="card-text">Cushion dengan coverage halus dan hasil akhir glowing natural.</p>
+                        <p class="price">Rp. 170.000</p>
+                        <a href="kontak.html" class="btn btn-product btn-sm">Beli Sekarang</a>
+                        <button class="btn btn-outline-secondary btn-sm toggle-desc-btn mt-2">Tampilkan Deskripsi</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="product-card card">
+                    <img src="lipstik.jpg" class="card-img-top" alt="Foundation">
+                    <div class="card-body p-2">
+                        <h5 class="card-title">ILIA</h5>
+                        <p class="card-text">Lip tint/lip cream dengan warna natural dan tekstur lembut.</p>
+                        <p class="price">Rp. 72.000</p>
+                        <a href="kontak.html" class="btn btn-product btn-sm">Beli Sekarang</a>
+                        <button class="btn btn-outline-secondary btn-sm toggle-desc-btn mt-2">Tampilkan Deskripsi</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="product-card card">
+                    <img src="serum.jpg" class="card-img-top" alt="Foundation">
+                    <div class="card-body p-2">
+                        <h5 class="card-title">CENTELLA</h5>
+                        <p class="card-text">Serum dengan ekstrak centella untuk menenangkan dan memperbaiki kulit.</p>
+                        <p class="price">Rp. 99.000</p>
+                        <a href="kontak.html" class="btn btn-product btn-sm">Beli Sekarang</a>
+                        <button class="btn btn-outline-secondary btn-sm toggle-desc-btn mt-2">Tampilkan Deskripsi</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="product-card card">
+                    <img src="parfum.jpg" class="card-img-top" alt="Foundation">
+                    <div class="card-body p-2">
+                        <h5 class="card-title">CHANEL</h5>
+                        <p class="card-text">Parfum elegan dengan aroma mewah dan tahan lama.</p>
+                        <p class="price">Rp. 500.000</p>
+                        <a href="kontak.html" class="btn btn-product btn-sm">Beli Sekarang</a>
+                        <button class="btn btn-outline-secondary btn-sm toggle-desc-btn mt-2">Tampilkan Deskripsi</button>
+                    </div>
+                </div>
+            </div>
+            
+            </div>
+    </section>
+
+    <footer class="main-footer mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4 text-center text-md-start">
+                    <h5 class="fw-bold">ILZA Beauty</h5>
+                    <p>Tempat terbaik untuk menemukan produk impianmu.</p>
+                </div>
+                <div class="col-md-4 mb-4 text-center text-md-start">
+                    <h5 class="fw-bold">Link Cepat</h5>
+                    <a href="index.html">Beranda</a>
+                    <a href="tentang.html">Tentang kami</a>
+                    <a href="produk.html">Produk</a>
+                    <a href="testimoni.html">Testimoni</a>
+                    <a href="kontak.html">Kontak</a>
+                </div>
+                <div class="col-md-4 mb-4 text-center text-md-start">
+                    <h5 class="fw-bold">Kontak</h5>
+                    <p>📞 WhatsApp: +62 887-8XXXX</p>
+                    <p>📧 Alamat: Jl. Melati Raya Gg. Jaman...</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script>
+        // Toggle per-produk: cari semua tombol .toggle-desc-btn dan kaitkan event
+        (function(){
+            var buttons = document.querySelectorAll('.toggle-desc-btn');
+            if(!buttons || buttons.length === 0) return;
+            buttons.forEach(function(btn){
+                btn.addEventListener('click', function(){
+                    // cari parent .product-card dari tombol ini
+                    var card = btn.closest('.product-card');
+                    if(!card) return;
+                    card.classList.toggle('show-desc');
+                    if(card.classList.contains('show-desc')){
+                        btn.textContent = 'Sembunyikan Deskripsi';
+                    } else {
+                        btn.textContent = 'Tampilkan Deskripsi';
+                    }
+                });
+            });
+        })();
+    </script>
+</body>
+</html>

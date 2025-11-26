@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontak - ILZA Beauty</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLMDJdZ4m02N0gHh1O5sJ+k2y0qF7o9Zt4f3bA5eQ3n0Mh6w1w7vQ2wB2B2B2B2g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        /* Variabel Warna dari Desain Figma/Gambar */
+        :root {
+            --color-primary: #8e5151; /* Pink Tua/Maroon */
+            --color-secondary: #E68D8D; /* Salmon untuk Hero dan Footer */
+            --color-text-dark: #333;
+            --color-text-light: #fff;
+            --color-success: #6cbf6c; /* Hijau untuk tombol kirim */
+        }
+
+        body {
+            font-family: sans-serif;
+            line-height: 1.6;
+            background-color: #fff;
+        }
+
+        /* --- 1. Header/Navbar (Sticky) --- */
+        .navbar-light {
+            background-color: #995656 !important;
+            z-index: 1020; 
+        }
+
+        .navbar-light .navbar-brand {
+            color: #fff !important;
+            font-weight: 700;
+        }
+
+        .navbar-light .navbar-nav .nav-link {
+            color: #fff;
+            font-weight: 500;
+        }
+
+        /* --- 2. Hero Header (Kontak) --- */
+        .contact-hero {
+            position: relative;
+            height: 600px; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            overflow: hidden;
+            /* Gambar Toko Interior */
+            background: url('foto kontak.jpg') no-repeat center center;
+            background-size: cover;
+        }
+
+        .contact-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.4); 
+        }
+
+        .contact-hero h1 {
+            color: var(--color-text-light);
+            font-size: 3rem;
+            font-weight: bold;
+            z-index: 10;
+        }
+
+        /* --- 3. Contact Form Section --- */
+        .contact-section {
+            padding: 50px 0 80px 0;
+        }
+
+        .contact-title {
+            font-size: 2.2rem;
+            font-weight: bold;
+            color: var(--color-text-dark);
+            margin-bottom: 10px;
+        }
+        
+        .contact-text {
+            margin-bottom: 40px;
+            font-size: 1rem;
+            color: #555;
+        }
+
+        /* Gaya Input Form (Sesuai desain abu-abu muda) */
+        .form-control {
+            background-color: #eee; /* Warna latar belakang abu-abu */
+            border: 1px solid #ddd;
+            padding: 15px;
+            height: auto; /* Tinggi disesuaikan */
+            border-radius: 4px;
+            box-shadow: none; /* Hilangkan shadow default Bootstrap */
+        }
+        
+        .form-control:focus {
+            background-color: #fff;
+            border-color: var(--color-secondary);
+            box-shadow: 0 0 0 0.25rem rgba(230, 141, 141, 0.25); /* Shadow fokus pink/salmon */
+        }
+
+        /* Gaya Tombol Kirim Pesan */
+        .btn-send {
+            background-color: var(--color-success); /* Hijau */
+            color: var(--color-text-light);
+            font-weight: bold;
+            padding: 12px 0;
+            width: 100%;
+            border-radius: 4px;
+        }
+        
+        .btn-send:hover {
+            background-color: #54b254; /* Sedikit lebih gelap saat hover */
+            color: var(--color-text-light);
+        }
+        
+        /* Area Teks Pesan */
+        textarea.form-control {
+            min-height: 150px;
+            resize: none; /* Nonaktifkan resize manual */
+        }
+
+        /* --- 4. Footer --- */
+        .main-footer {
+            background-color: var(--color-secondary);
+            color: var(--color-text-light);
+            padding: 50px 0;
+        }
+        .main-footer a {
+            color: var(--color-text-light);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 5px;
+        }
+        .footer-col-contact i {
+            margin-right: 8px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light py-3 sticky-top"> 
+            <div class="container-fluid px-5">
+                <a class="navbar-brand fw-bold" href="#">ILZA Beauty</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item"><a class="nav-link" href="index.html">Beranda</a></li>
+                        <li class="nav-item"><a class="nav-link" href="tentang-kami.html">Tentang Kami</a></li>
+                        <li class="nav-item"><a class="nav-link" href="produk.html">Produk</a></li>
+                        <li class="nav-item"><a class="nav-link" href="testimoni.html">Testimoni</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="kontak.html">Kontak</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="contact-hero">
+        <h1>KONTAK</h1>
+    </section>
+
+    <section class="contact-section container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <h2 class="contact-title">Kontak Kami</h2>
+                <p class="contact-text">Jika Anda memiliki pertanyaan atau ingin memesan produk batik kami, silahkan isi formulir di bawah ini. Kami akan segera menghubungi Anda!</p>
+
+                <form action="#" method="POST">
+                    
+                    <div class="mb-3">
+                        <label for="fullName" class="form-label visually-hidden">Full Name</label>
+                        <input type="text" class="form-control" id="fullName" placeholder="Full Name" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="email" class="form-label visually-hidden">Email</label>
+                        <input type="email" class="form-control" id="email" placeholder="Email" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="subject" class="form-label visually-hidden">Subject</label>
+                        <input type="text" class="form-control" id="subject" placeholder="Subject" required>
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="message" class="form-label visually-hidden">Your Message</label>
+                        <textarea class="form-control" id="message" placeholder="Your Message" rows="5" required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-send">Kirim Pesan</button>
+                </form>
+
+            </div>
+        </div>
+    </section>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4 text-center text-md-start">
+                    <h5 class="fw-bold">ILZA Beauty</h5>
+                    <p>Tempat terbaik untuk menemukan produk impianmu.</p>
+                </div>
+                <div class="col-md-4 mb-4 text-center text-md-start">
+                    <h5 class="fw-bold">Link Cepat</h5>
+                    <a href="index.html">Beranda</a>
+                    <a href="tentang.html">Tentang Kami</a>
+                    <a href="produk.html">Produk</a>
+                    <a href="testimoni.html">Testimoni</a>
+                    <a href="kontak.html">Kontak</a>
+                </div>
+                <div class="col-md-4 mb-4 text-center text-md-start footer-col-contact">
+                    <h5 class="fw-bold">Kontak</h5>
+                    <p><i class="fa-brands fa-whatsapp"></i> WhatsApp: +62 887-8XXXX</p>
+                    <p><i class="fa-solid fa-location-dot"></i> Alamat: Jl. Melati Raya Gg. Jaman...</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>

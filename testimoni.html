@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testimoni - ILZA Beauty</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLMDJdZ4m02N0gHh1O5sJ+k2y0qF7o9Zt4f3bA5eQ3n0Mh6w1w7vQ2wB2B2B2B2g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        /* Variabel Warna dari Desain Figma/Gambar */
+        :root {
+            --color-primary: #8e5151; /* Pink Tua/Maroon untuk tombol/harga */
+            --color-secondary: #E68D8D; /* Salmon untuk Hero dan Footer */
+            --color-text-dark: #333;
+            --color-text-light: #fff;
+            --color-review-bg: #f8f8f8; /* Latar belakang abu-abu muda untuk card review */
+            --color-star-rating: #ffc107; /* Warna Bintang Kuning/Emas */
+        }
+
+        body {
+            font-family: sans-serif;
+            line-height: 1.6;
+            background-color: #fff;
+        }
+
+        /* --- 1. Header/Navbar (Sticky) --- */
+        .navbar-light {
+            background-color: #995656 !important;
+            z-index: 1020; 
+        }
+
+        .navbar-light .navbar-brand {
+            color: #fff !important;
+            font-weight: 700;
+        }
+
+        .navbar-light .navbar-nav .nav-link {
+            color: #fff;
+            font-weight: 500;
+        }
+
+        /* --- 2. Hero Header (Testimoni) --- */
+        .testimonial-hero {
+            position: relative;
+            height: 600px; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            overflow: hidden;
+            /* Gambar Toko Interior Pink */
+            background: url('foto testimoni.jpg') no-repeat center center;
+            background-size: cover;
+        }
+
+        .testimonial-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.4); /* Overlay lebih gelap untuk teks */
+        }
+
+        .testimonial-hero h1 {
+            color: var(--color-text-light);
+            font-size: 3rem;
+            font-weight: bold;
+            z-index: 10;
+        }
+
+        /* --- 3. Content Section (Reviews & Members) --- */
+        .content-container {
+            padding: 50px 0;
+        }
+        
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--color-secondary); /* Menggunakan warna pink/salmon */
+            margin-bottom: 30px;
+        }
+
+        /* Kiri: Trending Reviews */
+        .review-card {
+            display: flex;
+            background-color: var(--color-review-bg);
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); /* Bayangan tipis */
+        }
+
+        .review-card .product-img-container {
+            width: 120px;
+            height: 120px;
+            overflow: hidden;
+            border-radius: 8px;
+            flex-shrink: 0; /* Agar gambar tidak menyusut */
+        }
+
+        .review-card .product-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .review-card .review-details {
+            padding-left: 15px;
+        }
+        
+        .review-details .rating i {
+            color: var(--color-star-rating);
+            font-size: 0.9rem;
+        }
+        
+        .review-details .username {
+            font-weight: bold;
+            font-size: 0.9rem;
+            color: var(--color-primary);
+        }
+
+        .review-details .comment {
+            font-size: 0.9rem;
+            color: #555;
+            margin-top: 5px;
+        }
+
+        /* Kanan: Top Members */
+        .top-members-card {
+            background-color: var(--color-review-bg);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+        
+        .member-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .member-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .member-avatar {
+            width: 40px;
+            height: 40px;
+            background-color: #ddd;
+            border-radius: 50%;
+            margin-right: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #888;
+            font-size: 1.2rem;
+        }
+
+        .member-info {
+            flex-grow: 1;
+        }
+        
+        .member-info .name {
+            font-weight: bold;
+            margin-bottom: 2px;
+        }
+
+        .member-info .level {
+            font-size: 0.8rem;
+            color: #6c757d;
+        }
+
+        .btn-follow {
+            background-color: var(--color-secondary);
+            color: var(--color-text-light);
+            font-size: 0.8rem;
+            padding: 5px 10px;
+            border-radius: 4px;
+            white-space: nowrap;
+        }
+        
+        .btn-follow:hover {
+            background-color: var(--color-primary);
+            color: var(--color-text-light);
+        }
+
+        /* --- 4. Footer --- */
+        .main-footer {
+            background-color: var(--color-secondary);
+            color: var(--color-text-light);
+            padding: 50px 0;
+        }
+        .main-footer a {
+            color: var(--color-text-light);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light py-3 sticky-top"> 
+            <div class="container-fluid px-5">
+                <a class="navbar-brand fw-bold" href="#">ILZA Beauty</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item"><a class="nav-link" href="index.html">Beranda</a></li>
+                        <li class="nav-item"><a class="nav-link" href="tentang.html">Tentang Kami</a></li>
+                        <li class="nav-item"><a class="nav-link" href="produk.html">Produk</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="testimoni.html">Testimoni</a></li>
+                        <li class="nav-item"><a class="nav-link" href="kontak.html">Kontak</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="testimonial-hero">
+        <h1>Testimoni</h1>
+    </section>
+
+    <section class="content-container container">
+        <div class="row">
+            
+            <div class="col-lg-7 mb-5 mb-lg-0">
+                <h2 class="section-title">TRENDING REVIEWS</h2>
+                
+                <div class="review-card">
+                    <div class="product-img-container">
+                        <img src="cushion.jpg" alt="Produk 1">
+                    </div>
+                    <div class="review-details">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="username">@CintaAyu</span>
+                            <div class="rating">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star-half-stroke"></i>
+                                <small>(4.5/5)</small>
+                            </div>
+                        </div>
+                        <small class="text-muted">3 minggu lalu</small>
+                        <p class="comment">"Cushionnya ringan banget di kulit! Walaupun dipakai seharian, tetep kelihatan flawless. Shade-nya juga pas banget."</p>
+                    </div>
+                </div>
+
+                <div class="review-card">
+                    <div class="product-img-container">
+                        <img src="lipstik.jpg" alt="Produk 2">
+                    </div>
+                    <div class="review-details">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="username">@RinaDewi</span>
+                            <div class="rating">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <small>(5.0/5)</small>
+                            </div>
+                        </div>
+                        <small class="text-muted">1 bulan lalu</small>
+                        <p class="comment">"Lipstiknya tahan lama dan warnanya pigmented. Kemasan mewah dan elegan. Worth to buy!"</p>
+                    </div>
+                </div>
+
+                <div class="review-card">
+                    <div class="product-img-container">
+                        <img src="serum.jpg" alt="Produk 3">
+                    </div>
+                    <div class="review-details">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="username">@Santi_MUA</span>
+                            <div class="rating">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <small>(4.0/5)</small>
+                            </div>
+                        </div>
+                        <small class="text-muted">2 bulan lalu</small>
+                        <p class="comment">"Serumnya cepat menyerap, kulit terasa lebih lembap dan kenyal setelah pemakaian rutin 1 minggu. Lumayan bagus."</p>
+                    </div>
+                </div>
+
+                </div>
+
+            <div class="col-lg-5">
+                <h2 class="section-title">TOP MEMBERS</h2>
+                <div class="top-members-card">
+                    
+                    <div class="member-item">
+                        <div class="member-avatar"><i class="fa-solid fa-user"></i></div>
+                        <div class="member-info">
+                            <div class="name">@BundaKece88</div>
+                            <div class="level">Platinum Member (72 Reviews)</div>
+                        </div>
+                        <button class="btn btn-follow">Follow</button>
+                    </div>
+
+                    <div class="member-item">
+                        <div class="member-avatar"><i class="fa-solid fa-user"></i></div>
+                        <div class="member-info">
+                            <div class="name">@BeautyVloggerX</div>
+                            <div class="level">Gold Member (55 Reviews)</div>
+                        </div>
+                        <button class="btn btn-follow">Follow</button>
+                    </div>
+
+                    <div class="member-item">
+                        <div class="member-avatar"><i class="fa-solid fa-user"></i></div>
+                        <div class="member-info">
+                            <div class="name">@MakEnjel</div>
+                            <div class="level">Silver Member (38 Reviews)</div>
+                        </div>
+                        <button class="btn btn-follow">Follow</button>
+                    </div>
+                    
+                    <div class="member-item">
+                        <div class="member-avatar"><i class="fa-solid fa-user"></i></div>
+                        <div class="member-info">
+                            <div class="name">@DewiCantik</div>
+                            <div class="level">Bronze Member (21 Reviews)</div>
+                        </div>
+                        <button class="btn btn-follow">Follow</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="main-footer mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4 text-center text-md-start">
+                    <h5 class="fw-bold">ILZA Beauty</h5>
+                    <p>Tempat terbaik untuk menemukan produk impianmu.</p>
+                </div>
+                <div class="col-md-4 mb-4 text-center text-md-start">
+                    <h5 class="fw-bold">Link Cepat</h5>
+                    <a href="index.html">Beranda</a>
+                    <a href="tentang.html">Tentang Kami</a>
+                    <a href="produk.html">Produk</a>
+                    <a href="testimoni.html">Testimoni</a>
+                    <a href="kontak.html">Kontak</a>
+                </div>
+                <div class="col-md-4 mb-4 text-center text-md-start">
+                    <h5 class="fw-bold">Kontak</h5>
+                    <p>📞 WhatsApp: +62 887-8XXXX</p>
+                    <p>📧 Alamat: Jl. Melati Raya Gg. Jaman...</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>
