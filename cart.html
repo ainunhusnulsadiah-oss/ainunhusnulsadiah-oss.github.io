@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keranjang - ILZA Beauty</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <style>
+        :root {
+            --color-primary: #995656;
+            --color-hover: #8e5151;
+        }
+        body { font-family: sans-serif; background:#fff; }
+        .navbar { background-color: var(--color-primary); }
+        .navbar-brand { color: #fff !important; }
+        .navbar .nav-link { color: rgba(255,255,255,0.8) !important; }
+        .navbar .nav-link:hover { color: #fff !important; }
+        .cart-table img { width: 80px; height: 80px; object-fit: cover; border-radius:6px; }
+        .btn-primary.custom { background: var(--color-primary); border-color: var(--color-primary); }
+        .btn-primary.custom:hover { background: var(--color-hover); border-color: var(--color-hover); }
+        .qty-btn { width:34px; }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light py-3 sticky-top">
+        <div class="container-fluid px-5">
+            <a class="navbar-brand fw-bold" href="index.html">ILZA Beauty</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Beranda</a></li>
+                    <li class="nav-item"><a class="nav-link" href="tentang.html">Tentang Kami</a></li>
+                    <li class="nav-item"><a class="nav-link" href="produk.html">Produk</a></li>
+                    <li class="nav-item"><a class="nav-link" href="testimoni.html">Testimoni</a></li>
+                    <li class="nav-item"><a class="nav-link" href="kontak.html">Kontak</a></li>
+                    <li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
+                    <li class="nav-item"><a class="nav-link" href="cart.html">Keranjang <span id="cart-count" class="badge bg-light text-dark">0</span></a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container my-5">
+        <h2 class="mb-4">Keranjang Belanja</h2>
+        <div id="empty" class="alert alert-info">Keranjang kosong. <a href="produk.html">Lihat produk</a></div>
+        <div id="cart-wrap" style="display:none">
+            <div class="table-responsive">
+                <table class="table cart-table">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Produk</th>
+                            <th>Harga</th>
+                            <th>Jumlah</th>
+                            <th>Subtotal</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="cart-body"></tbody>
+                </table>
+            </div>
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <button id="clearBtn" class="btn btn-outline-danger">Kosongkan Keranjang</button>
+                </div>
+                <div class="text-end">
+                    <h4>Total: <span id="cart-total">Rp. 0</span></h4>
+                    <a id="checkoutBtn" class="btn btn-primary custom" href="kontak.html">Checkout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        (function(){
+            function loadCart(){ try{ return JSON.parse(localStorage.getItem('ilza_cart')||'[]'); }catch(e){return []} }
+            function saveCart(cart){ localStorage.setItem('ilza_cart', JSON.stringify(cart)); render(); updateCount(); }
+            function updateCount(){ var cart=loadCart(); var count=cart.reduce((s,i)=>s+(i.qty||0),0); var el=document.getElementById('cart-count'); if(el) el.textContent=count; }
+            function formatRp(n){ return 'Rp. ' + n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.'); }
+
+            function render(){
+                var cart = loadCart();
+                var body = document.getElementById('cart-body');
+                var wrap = document.getElementById('cart-wrap');
+                var empty = document.getElementById('empty');
+                body.innerHTML = '';
+                if(!cart || cart.length===0){ wrap.style.display='none'; empty.style.display='block'; updateCount(); return; }
+                empty.style.display='none'; wrap.style.display='block';
+                var total=0;
+                cart.forEach(function(item, idx){
+                    var subtotal = (item.price||0) * (item.qty||1);
+                    total += subtotal;
+                    var tr = document.createElement('tr');
+                    tr.innerHTML = '<td><img src="'+(item.img||'')+'" alt=""></td>'+
+                                   '<td>'+item.title+'</td>'+
+                                   '<td>'+formatRp(item.price)+'</td>'+
+                                   '<td><div class="d-flex align-items-center"><button class="btn btn-sm btn-outline-secondary qty-btn" data-action="dec" data-index="'+idx+'">-</button><div class="px-2">'+(item.qty||1)+'</div><button class="btn btn-sm btn-outline-secondary qty-btn" data-action="inc" data-index="'+idx+'">+</button></div></td>'+
+                                   '<td>'+formatRp(subtotal)+'</td>'+
+                                   '<td><button class="btn btn-sm btn-danger remove-btn" data-index="'+idx+'">Hapus</button></td>';
+                    body.appendChild(tr);
+                });
+                document.getElementById('cart-total').textContent = formatRp(total);
+            }
+
+            document.addEventListener('click', function(e){
+                var btn = e.target;
+                if(btn.matches('.remove-btn')){
+                    var idx = parseInt(btn.getAttribute('data-index'),10); var cart = loadCart(); cart.splice(idx,1); saveCart(cart);
+                }
+                if(btn.matches('[data-action]')){
+                    var action = btn.getAttribute('data-action'); var idx = parseInt(btn.getAttribute('data-index'),10); var cart = loadCart(); if(!cart[idx]) return;
+                    if(action==='inc'){ cart[idx].qty = (cart[idx].qty||1) + 1; }
+                    if(action==='dec'){ cart[idx].qty = Math.max(1, (cart[idx].qty||1) - 1); }
+                    saveCart(cart);
+                }
+                if(btn.id === 'clearBtn'){
+                    if(confirm('Kosongkan keranjang?')){ localStorage.removeItem('ilza_cart'); render(); updateCount(); }
+                }
+            });
+
+            // init
+            render(); updateCount();
+        })();
+    </script>
+</body>
+</html>

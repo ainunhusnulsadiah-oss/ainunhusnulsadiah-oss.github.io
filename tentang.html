@@ -82,6 +82,17 @@
             min-height: 350px;
             border-radius: 8px; /* Jika ada radius */
         }
+            <script>
+                (function(){
+                    try{
+                        var el = document.getElementById('cart-count');
+                        if(!el) return;
+                        var cart = JSON.parse(localStorage.getItem('ilza_cart')||'[]');
+                        var count = cart.reduce(function(s,i){ return s + (i.qty||0); },0);
+                        el.textContent = count;
+                    }catch(e){}
+                })();
+            </script>
 
         .text-content h2 {
             color: var(--color-primary);
@@ -178,6 +189,8 @@
                         <li class="nav-item"><a class="nav-link" href="produk.html">Produk</a></li>
                         <li class="nav-item"><a class="nav-link" href="testimoni.html">Testimoni</a></li>
                         <li class="nav-item"><a class="nav-link" href="kontak.html">Kontak</a></li>
+                        <li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
+                        <li class="nav-item"><a class="nav-link" href="cart.html">Keranjang <span id="cart-count" class="badge bg-light text-dark">0</span></a></li>
                     </ul>
                 </div>
             </div>

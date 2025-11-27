@@ -145,6 +145,18 @@
             color: var(--color-text-light);
         }
 
+        /* Tombol tambah keranjang, warna sama dengan navbar */
+        .btn-cart {
+            width: 100%;
+            background-color: #995656;
+            color: var(--color-text-light);
+            border: none;
+        }
+        .btn-cart:hover {
+            background-color: #8e5151;
+            color: var(--color-text-light);
+        }
+
         /* --- 4. Footer --- */
         .main-footer {
             background-color: var(--color-secondary);
@@ -175,6 +187,8 @@
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="produk.html">Produk</a></li>
                         <li class="nav-item"><a class="nav-link" href="testimoni.html">Testimoni</a></li>
                         <li class="nav-item"><a class="nav-link" href="kontak.html">Kontak</a></li>
+                        <li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
+                        <li class="nav-item"><a class="nav-link" href="cart.html">Keranjang <span id="cart-count" class="badge bg-light text-dark">0</span></a></li>
                     </ul>
                 </div>
             </div>
@@ -206,6 +220,7 @@
                         <p class="price">Rp. 95.000</p>
                         <a href="kontak.html" class="btn btn-product btn-sm">Beli Sekarang</a>
                         <button class="btn btn-outline-secondary btn-sm toggle-desc-btn mt-2">Tampilkan Deskripsi</button>
+                        <button class="btn btn-cart btn-sm mt-2 add-to-cart" data-title="MEDICUBE" data-price="95000" data-img="produk 1.jpg">Tambah ke Keranjang</button>
                     </div>
                 </div>
             </div>
@@ -219,6 +234,7 @@
                         <p class="price">Rp. 75.000</p>
                         <a href="kontak.html" class="btn btn-product btn-sm">Beli Sekarang</a>
                         <button class="btn btn-outline-secondary btn-sm toggle-desc-btn mt-2">Tampilkan Deskripsi</button>
+                        <button class="btn btn-cart btn-sm mt-2 add-to-cart" data-title="GLAD2GLOW" data-price="75000" data-img="produk 2.jpg">Tambah ke Keranjang</button>
                     </div>
                 </div>
             </div>
@@ -232,6 +248,7 @@
                         <p class="price">Rp. 40.000</p>
                         <a href="kontak.html" class="btn btn-product btn-sm">Beli Sekarang</a>
                         <button class="btn btn-outline-secondary btn-sm toggle-desc-btn mt-2">Tampilkan Deskripsi</button>
+                        <button class="btn btn-cart btn-sm mt-2 add-to-cart" data-title="GARNIER" data-price="40000" data-img="produk 3.jpg">Tambah ke Keranjang</button>
                     </div>
                 </div>
             </div>
@@ -245,6 +262,7 @@
                         <p class="price">Rp. 125.000</p>
                         <a href="kontak.html" class="btn btn-product btn-sm">Beli Sekarang</a>
                         <button class="btn btn-outline-secondary btn-sm toggle-desc-btn mt-2">Tampilkan Deskripsi</button>
+                        <button class="btn btn-cart btn-sm mt-2 add-to-cart" data-title="LUMEA" data-price="125000" data-img="produk 4.jpg">Tambah ke Keranjang</button>
                     </div>
                 </div>
             </div>
@@ -258,6 +276,7 @@
                         <p class="price">Rp. 50.000</p>
                         <a href="kontak.html" class="btn btn-product btn-sm">Beli Sekarang</a>
                         <button class="btn btn-outline-secondary btn-sm toggle-desc-btn mt-2">Tampilkan Deskripsi</button>
+                        <button class="btn btn-cart btn-sm mt-2 add-to-cart" data-title="BLOOM" data-price="50000" data-img="produk 5.jpg">Tambah ke Keranjang</button>
                     </div>
                 </div>
             </div>
@@ -270,6 +289,7 @@
                         <p class="price">Rp. 37.000</p>
                         <a href="kontak.html" class="btn btn-product btn-sm">Beli Sekarang</a>
                         <button class="btn btn-outline-secondary btn-sm toggle-desc-btn mt-2">Tampilkan Deskripsi</button>
+                        <button class="btn btn-cart btn-sm mt-2 add-to-cart" data-title="ARENCIA" data-price="37000" data-img="produk 6.jpg">Tambah ke Keranjang</button>
                     </div>
                 </div>
             </div>
@@ -282,6 +302,7 @@
                         <p class="price">Rp. 69.000</p>
                         <a href="kontak.html" class="btn btn-product btn-sm">Beli Sekarang</a>
                         <button class="btn btn-outline-secondary btn-sm toggle-desc-btn mt-2">Tampilkan Deskripsi</button>
+                        <button class="btn btn-cart btn-sm mt-2 add-to-cart" data-title="CAUDALIE" data-price="69000" data-img="produk 7.jpg">Tambah ke Keranjang</button>
                     </div>
                 </div>
             </div>
@@ -294,6 +315,8 @@
                         <p class="price">Rp. 72.000</p>
                         <a href="kontak.html" class="btn btn-product btn-sm">Beli Sekarang</a>
                         <button class="btn btn-outline-secondary btn-sm toggle-desc-btn mt-2">Tampilkan Deskripsi</button>
+                        <button class="btn btn-cart btn-sm mt-2 add-to-cart" data-title="ILIA" data-price="72000" data-img="lipstik.jpg">Tambah ke Keranjang</button>
+                        <button class="btn btn-cart btn-sm mt-2 add-to-cart" data-title="CLARINS" data-price="72000" data-img="produk 8.jpg">Tambah ke Keranjang</button>
                     </div>
                 </div>
             </div>
@@ -306,6 +329,7 @@
                         <p class="price">Rp. 170.000</p>
                         <a href="kontak.html" class="btn btn-product btn-sm">Beli Sekarang</a>
                         <button class="btn btn-outline-secondary btn-sm toggle-desc-btn mt-2">Tampilkan Deskripsi</button>
+                        <button class="btn btn-cart btn-sm mt-2 add-to-cart" data-title="SKINTIFIC" data-price="170000" data-img="cushion.jpg">Tambah ke Keranjang</button>
                     </div>
                 </div>
             </div>
@@ -330,6 +354,7 @@
                         <p class="price">Rp. 99.000</p>
                         <a href="kontak.html" class="btn btn-product btn-sm">Beli Sekarang</a>
                         <button class="btn btn-outline-secondary btn-sm toggle-desc-btn mt-2">Tampilkan Deskripsi</button>
+                        <button class="btn btn-cart btn-sm mt-2 add-to-cart" data-title="CENTELLA" data-price="99000" data-img="serum.jpg">Tambah ke Keranjang</button>
                     </div>
                 </div>
             </div>
@@ -342,6 +367,7 @@
                         <p class="price">Rp. 500.000</p>
                         <a href="kontak.html" class="btn btn-product btn-sm">Beli Sekarang</a>
                         <button class="btn btn-outline-secondary btn-sm toggle-desc-btn mt-2">Tampilkan Deskripsi</button>
+                        <button class="btn btn-cart btn-sm mt-2 add-to-cart" data-title="CHANEL" data-price="500000" data-img="parfum.jpg">Tambah ke Keranjang</button>
                     </div>
                 </div>
             </div>
@@ -392,6 +418,40 @@
                     }
                 });
             });
+        })();
+
+        // Simple client-side cart using localStorage (same behavior as on index.html)
+        (function(){
+            function loadCart(){
+                try{ return JSON.parse(localStorage.getItem('ilza_cart')||'[]'); }catch(e){return []}
+            }
+            function saveCart(cart){ localStorage.setItem('ilza_cart', JSON.stringify(cart)); updateCount(); }
+            function updateCount(){
+                var cart = loadCart();
+                var count = cart.reduce(function(s,i){ return s + (i.qty||0); },0);
+                var el = document.getElementById('cart-count'); if(el) el.textContent = count;
+            }
+            function addToCart(item){
+                var cart = loadCart();
+                var existing = cart.find(function(i){ return i.id === item.id; });
+                if(existing){ existing.qty = (existing.qty||1) + 1; }
+                else { cart.push(item); }
+                saveCart(cart);
+            }
+            // wire buttons
+            document.addEventListener('click', function(e){
+                var btn = e.target.closest('.add-to-cart');
+                if(!btn) return;
+                var title = btn.getAttribute('data-title') || btn.closest('.product-card')?.querySelector('.card-title')?.textContent || 'Produk';
+                var price = parseInt(btn.getAttribute('data-price')||'0',10) || 0;
+                var img = btn.getAttribute('data-img')||'';
+                var id = (title+'-'+price).replace(/\s+/g,'-').toLowerCase();
+                addToCart({ id:id, title:title, price:price, qty:1, img:img });
+                btn.textContent = 'Ditambahkan ✓';
+                setTimeout(function(){ btn.textContent = 'Tambah ke Keranjang'; },1200);
+            });
+            // init count
+            updateCount();
         })();
     </script>
 </body>
