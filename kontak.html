@@ -176,8 +176,9 @@
                 <h2 class="contact-title">Kontak Kami</h2>
                 <p class="contact-text">Jika Anda memiliki pertanyaan atau ingin memesan produk batik kami, silahkan isi formulir di bawah ini. Kami akan segera menghubungi Anda!</p>
 
-                <form action="#" method="POST">
-                    
+                <form id="contactForm" action="#" method="POST">
+                    <div id="contactAlert" class="alert alert-success" role="alert" style="display:none;">Pesan berhasil dikirim.</div>
+
                     <div class="mb-3">
                         <label for="fullName" class="form-label visually-hidden">Full Name</label>
                         <input type="text" class="form-control" id="fullName" placeholder="Full Name" required>
@@ -200,6 +201,7 @@
 
                     <button type="submit" class="btn btn-send">Kirim Pesan</button>
                 </form>
+
 
             </div>
         </div>
@@ -239,6 +241,33 @@
                 var count = cart.reduce(function(s,i){ return s + (i.qty||0); },0);
                 el.textContent = count;
             }catch(e){}
+        })();
+    </script>
+    <script>
+        // Contact form submit handler (client-side demo)
+        (function(){
+            var form = document.getElementById('contactForm');
+            if(!form) return;
+            var alertEl = document.getElementById('contactAlert');
+            form.addEventListener('submit', function(e){
+                e.preventDefault();
+                try{
+                    var name = (document.getElementById('fullName')||{}).value || '';
+                    // show success message
+                    if(alertEl){
+                        alertEl.innerHTML = 'Pesan berhasil dikirim. Terima kasih' + (name?(', ' + name):'') + '!';
+                        alertEl.style.display = 'block';
+                    } else {
+                        alert('Pesan berhasil dikirim. Terima kasih' + (name?(', ' + name):'') + '!');
+                    }
+                    // clear the form
+                    form.reset();
+                    // hide after 5s
+                    setTimeout(function(){ if(alertEl) alertEl.style.display='none'; },5000);
+                }catch(err){
+                    console.error(err);
+                }
+            });
         })();
     </script>
 </body>
