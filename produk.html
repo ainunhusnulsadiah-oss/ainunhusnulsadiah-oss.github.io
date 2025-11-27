@@ -122,7 +122,12 @@
             background-color: var(--color-secondary);
             color: var(--color-text-light);
             font-weight: 600;
-            padding: 8px;
+            padding: 10px 8px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 8px;
         }
         .btn-product:hover {
             background-color: var(--color-primary);
@@ -135,9 +140,12 @@
             background-color: #995656;
             color: var(--color-text-light);
             border: none;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 8px;
+            height: 40px;
+            margin-bottom: 8px;
         }
 
         .toggle-desc-btn:hover {
@@ -151,6 +159,11 @@
             background-color: #995656;
             color: var(--color-text-light);
             border: none;
+            padding: 10px 8px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         .btn-cart:hover {
             background-color: #8e5151;
@@ -174,7 +187,7 @@
 <body>
 
     <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light py-3 **sticky-top**"> 
+        <nav class="navbar navbar-expand-lg navbar-light py-3 sticky-top"> 
             <div class="container-fluid px-5">
                 <a class="navbar-brand fw-bold" href="#">ILZA Beauty</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -316,7 +329,6 @@
                         <a href="kontak.html" class="btn btn-product btn-sm">Beli Sekarang</a>
                         <button class="btn btn-outline-secondary btn-sm toggle-desc-btn mt-2">Tampilkan Deskripsi</button>
                         <button class="btn btn-cart btn-sm mt-2 add-to-cart" data-title="ILIA" data-price="72000" data-img="lipstik.jpg">Tambah ke Keranjang</button>
-                        <button class="btn btn-cart btn-sm mt-2 add-to-cart" data-title="CLARINS" data-price="72000" data-img="produk 8.jpg">Tambah ke Keranjang</button>
                     </div>
                 </div>
             </div>
@@ -342,6 +354,7 @@
                         <p class="price">Rp. 72.000</p>
                         <a href="kontak.html" class="btn btn-product btn-sm">Beli Sekarang</a>
                         <button class="btn btn-outline-secondary btn-sm toggle-desc-btn mt-2">Tampilkan Deskripsi</button>
+                        <button class="btn btn-cart btn-sm mt-2 add-to-cart" data-title="ILIA" data-price="72000" data-img="lipstik.jpg">Tambah ke Keranjang</button>
                     </div>
                 </div>
             </div>
