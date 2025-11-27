@@ -65,13 +65,32 @@
                 <div>
                     <button id="clearBtn" class="btn btn-outline-danger">Kosongkan Keranjang</button>
                 </div>
-                <div class="text-end">
-                    <h4>Total: <span id="cart-total">Rp. 0</span></h4>
-                    <a id="checkoutBtn" class="btn btn-primary custom" href="kontak.html">Checkout</a>
-                </div>
+                                <div class="text-end">
+                                        <h4>Total: <span id="cart-total">Rp. 0</span></h4>
+                                        <button id="checkoutBtn" class="btn btn-primary custom" type="button">Checkout</button>
+                                </div>
             </div>
         </div>
     </div>
+
+        <!-- Modal: Pembayaran Berhasil -->
+        <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="successModalLabel">Pembayaran Berhasil</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p id="successMessage">Terima kasih! Pembayaran Anda telah berhasil.</p>
+                        <p><strong>No. Pesanan:</strong> <span id="orderId"></span></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
     <script>
         (function(){
@@ -122,6 +141,33 @@
 
             // init
             render(); updateCount();
+
+            // Checkout handler - simulate payment success
+            var checkoutBtn = document.getElementById('checkoutBtn');
+            if(checkoutBtn){
+                checkoutBtn.addEventListener('click', function(){
+                    var cart = loadCart();
+                    if(!cart || cart.length === 0){
+                        alert('Keranjang kosong. Tambahkan produk dulu.');
+                        return;
+                    }
+                    if(!confirm('Lanjutkan pembayaran?')) return;
+                    // create simple order id
+                    var orderId = 'ORD' + Date.now().toString().slice(-6);
+                    // clear cart and update UI
+                    localStorage.removeItem('ilza_cart');
+                    render(); updateCount();
+                    var orderEl = document.getElementById('orderId');
+                    if(orderEl) orderEl.textContent = orderId;
+                    var successModalEl = document.getElementById('successModal');
+                    if(successModalEl){
+                        var modal = new bootstrap.Modal(successModalEl);
+                        modal.show();
+                    } else {
+                        alert('Pembayaran berhasil. No. Pesanan: ' + orderId);
+                    }
+                });
+            }
         })();
     </script>
 </body>
