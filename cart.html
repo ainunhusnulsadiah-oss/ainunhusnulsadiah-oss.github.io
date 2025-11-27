@@ -73,25 +73,6 @@
         </div>
     </div>
 
-        <!-- Modal: Pembayaran Berhasil -->
-        <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="successModalLabel">Pembayaran Berhasil</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <p id="successMessage">Terima kasih! Pembayaran Anda telah berhasil.</p>
-                        <p><strong>No. Pesanan:</strong> <span id="orderId"></span></p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
     <script>
         (function(){
             function loadCart(){ try{ return JSON.parse(localStorage.getItem('ilza_cart')||'[]'); }catch(e){return []} }
@@ -152,20 +133,16 @@
                         return;
                     }
                     if(!confirm('Lanjutkan pembayaran?')) return;
-                    // create simple order id
+                    // create simple order id and save an order object to sessionStorage
                     var orderId = 'ORD' + Date.now().toString().slice(-6);
+                    var total = cart.reduce(function(s,i){ return s + ((i.price||0) * (i.qty||1)); },0);
+                    var order = { id: orderId, items: cart, total: total, date: new Date().toISOString() };
+                    try{ sessionStorage.setItem('ilza_order', JSON.stringify(order)); }catch(e){}
                     // clear cart and update UI
                     localStorage.removeItem('ilza_cart');
                     render(); updateCount();
-                    var orderEl = document.getElementById('orderId');
-                    if(orderEl) orderEl.textContent = orderId;
-                    var successModalEl = document.getElementById('successModal');
-                    if(successModalEl){
-                        var modal = new bootstrap.Modal(successModalEl);
-                        modal.show();
-                    } else {
-                        alert('Pembayaran berhasil. No. Pesanan: ' + orderId);
-                    }
+                    // redirect to order success page
+                    window.location.href = 'success.html';
                 });
             }
         })();
